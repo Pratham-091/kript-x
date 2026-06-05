@@ -20,9 +20,8 @@ export default function SuccessPage() {
     }
 
     // 10-Minute Expiration Security Check
-    // If they have a payment ID, verify it's not older than 10 minutes
     if (paymentId) {
-      fetch(`/api/check-payment/${paymentId}`)
+      fetch(`/api/check-payment?paymentId=${paymentId}`)
         .then(res => res.json())
         .then(data => {
           if (data.expired) {
