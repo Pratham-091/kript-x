@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { handleRazorpayCheckout } from '../utils/razorpay';
 import ClaudeIcon from './ClaudeIcon';
 
 export default function Hero() {
+  const navigate = useNavigate();
   return (
     <section className="hero-section">
       <div className="container responsive-flex hero-flex-mobile">
@@ -70,9 +73,9 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.3 }}
             style={{ marginBottom: '60px' }}
           >
-            <a href="#pricing" className="btn-primary" style={{ display: 'inline-block' }}>
-              UNLOCK 2,000+ RESOURCES → @ ₹499 ONLY
-            </a>
+            <button onClick={() => handleRazorpayCheckout(navigate)} className="btn-primary" style={{ width: '100%', maxWidth: '400px', cursor: 'pointer', border: 'none' }}>
+              GET INSTANT ACCESS @ ₹499
+            </button>
             <p style={{ color: 'var(--text-muted-dark)', marginTop: '16px', fontSize: '0.9rem', fontWeight: 700 }}>
               One-time payment | Instant delivery
             </p>
