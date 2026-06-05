@@ -1,0 +1,337 @@
+@font-face {
+  font-family: 'CameraPlainVariable';
+  src: url('https://cdn.gpteng.co/mcp-widgets/v1/fonts/CameraPlainVariable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Color Palette */
+  --bg-white: #ffffff;
+  --bg-offwhite: #f8f9fa;
+  --bg-slate-50: #f8fafc;
+  --bg-slate-100: #f1f5f9;
+  
+  --bg-slate-800: #1e293b;
+  --bg-slate-900: #0f172a;
+  --bg-slate-950: #020617;
+  
+  --text-dark: #0f172a;
+  --text-light: #ffffff;
+  --text-muted-dark: #475569;
+  --text-muted-light: #94a3b8;
+  
+  --accent-green-500: #22c55e;
+  --accent-green-600: #16a34a;
+  --accent-green-700: #15803d;
+  --accent-green-800: #166534;
+  
+  --accent-yellow-300: #fde047;
+  --accent-yellow-400: #facc15;
+  --accent-yellow-500: #eab308;
+  
+  --accent-red-500: #ef4444;
+  --accent-red-600: #dc2626;
+
+  /* Typography */
+  --font-heading: 'CameraPlainVariable', system-ui, sans-serif;
+  --font-body: 'CameraPlainVariable', system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-white);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 100px 0;
+}
+
+.hero-section {
+  padding: 80px 0 100px 0;
+  background: var(--bg-offwhite);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+  .section {
+    padding: 60px 0;
+  }
+  .hero-section {
+    padding: 10px 0 40px 0;
+  }
+}
+
+.section-label {
+  display: block;
+  font-family: var(--font-body);
+  color: var(--text-muted-dark);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-label-light {
+  display: block;
+  font-family: var(--font-body);
+  color: var(--text-muted-light);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-title {
+  font-size: 3rem;
+  margin-bottom: 24px;
+}
+
+/* Yellow Highlight Text */
+.highlight-yellow {
+  background-color: var(--accent-yellow-400);
+  color: var(--text-dark);
+  padding: 0 12px;
+  display: inline-block;
+  line-height: 1.1;
+  transform: skewX(-5deg);
+}
+
+/* Primary Green 3D Button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-green-600);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 900;
+  font-size: 1.25rem;
+  padding: 20px 32px;
+  border-radius: 12px;
+  border: none;
+  border-bottom: 4px solid var(--accent-green-800);
+  box-shadow: rgba(22, 163, 74, 0.5) 0px 10px 25px -5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  text-transform: uppercase;
+  animation: pulse-fast 2s infinite;
+}
+
+.btn-primary:hover {
+  background: var(--accent-green-700);
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+  margin-bottom: 2px;
+}
+
+/* Secondary Yellow Button */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-yellow-400);
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-align: center;
+}
+
+.btn-secondary:hover {
+  background: var(--accent-yellow-500);
+}
+
+/* Dark Pill Button */
+.btn-dark {
+  display: inline-flex;
+  background: var(--bg-slate-900);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 700;
+  padding: 12px 32px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.btn-dark:hover {
+  opacity: 0.9;
+}
+
+/* Card Styles */
+.card-light {
+  background: var(--bg-white);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.card-dark {
+  background: var(--bg-slate-800);
+  border-radius: 12px;
+  padding: 32px;
+}
+
+/* Animations */
+@keyframes pulse-fast {
+  0% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(22, 163, 74, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+  }
+}
+
+.sticky-cta-mobile {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: var(--bg-white);
+  border-top: 1px solid #e2e8f0;
+  z-index: 100;
+  display: none;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
+}
+
+/* Responsive Utility Classes */
+.nav-logo {
+  height: 60px;
+  width: auto;
+  transform: scale(3);
+  transform-origin: left center;
+  margin-right: 80px;
+  transition: transform 0.3s ease;
+}
+
+.footer-logo {
+  height: 100px;
+  width: auto;
+  margin-bottom: 60px;
+  transform: scale(2.5);
+  transform-origin: center center;
+  filter: invert(1) brightness(2);
+  transition: transform 0.3s ease;
+}
+
+.responsive-flex {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+  .sticky-cta-mobile {
+    display: block;
+  }
+  .btn-primary {
+    font-size: 1.1rem;
+    padding: 16px 24px;
+  }
+  
+  /* Hero Layout on Mobile */
+  .hero-flex-mobile {
+    flex-direction: column;
+    gap: 16px !important;
+  }
+  
+  .hero-text-center-mobile {
+    align-items: center !important;
+    text-align: center;
+  }
+  
+  .hero-image-mobile {
+    max-width: 350px !important;
+    margin: 0 auto;
+  }
+  
+  .hero-stats-grid-mobile {
+    gap: 24px !important;
+  }
+  
+  /* 2-Column Grid on Mobile */
+  .category-grid-mobile {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+  
+  .category-card-mobile {
+    padding: 16px !important;
+    gap: 12px !important;
+  }
+  
+  .category-badge-mobile {
+    font-size: 0.7rem !important;
+    padding: 4px 8px !important;
+  }
+  
+  .category-title-mobile {
+    font-size: 1.1rem !important;
+  }
+
+  .card-light, .card-dark, .card-padding-mobile {
+    padding: 24px 16px !important;
+  }
+
+  .nav-logo {
+    height: 40px;
+    transform: scale(2);
+    margin-right: 40px;
+  }
+
+  .footer-logo {
+    height: 60px;
+    transform: scale(2);
+    margin-bottom: 40px;
+  }
+}
