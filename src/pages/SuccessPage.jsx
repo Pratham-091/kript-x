@@ -16,12 +16,6 @@ export default function SuccessPage() {
   const supportMailto = `mailto:supportkriptx.com@gmail.com?subject=${subject}&body=${body}`;
 
   useEffect(() => {
-    // Fire Meta Pixel tracking for the Success Page
-    if (window.fbq) {
-      window.fbq('track', 'PageView');
-      window.fbq('track', 'Purchase', { currency: "INR", value: 499.00 });
-    }
-
     // Basic Security: Check if the user actually came from Razorpay.
     const hasPaymentToken = paymentId || searchParams.has('razorpay_payment_link_id');
 
