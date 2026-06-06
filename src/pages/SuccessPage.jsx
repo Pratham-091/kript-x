@@ -26,7 +26,8 @@ export default function SuccessPage() {
 
     // 10-Minute Expiration Security Check
     if (paymentId) {
-      fetch(`/api/check-payment?paymentId=${paymentId}`)
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+      fetch(`${backendUrl}/api/payments/check-payment?paymentId=${paymentId}`)
         .then(res => res.json())
         .then(data => {
           if (data.expired) {

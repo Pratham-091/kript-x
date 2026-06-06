@@ -1,7 +1,8 @@
 export const handleRazorpayCheckout = async (navigate, customerData = {}) => {
   try {
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
     // 1. Create order on backend
-    const res = await fetch('/api/create-order', {
+    const res = await fetch(`${backendUrl}/api/payments/create-order`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ coupon: customerData.coupon || "" })
@@ -25,7 +26,7 @@ export const handleRazorpayCheckout = async (navigate, customerData = {}) => {
       handler: async function (response){
         // 3. Verify Payment Signature on backend
         try {
-          const verifyRes = await fetch('/api/verify-payment', {
+          const verifyRes = await fetch(`${backendUrl}/api/payments/verify-payment`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
