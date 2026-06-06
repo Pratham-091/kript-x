@@ -1,7 +1,28 @@
 import { API_ENDPOINTS } from '../config/endpoints';
 
+const loadRazorpayScript = () => {
+  return new Promise((resolve) => {
+    if (window.Razorpay) {
+      resolve(true);
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
+    document.body.appendChild(script);
+  });
+};
+
 export const handleRazorpayCheckout = async (navigate, customerData = {}) => {
   try {
+    // 0. Load script dynamically
+    const resScript = await loadRazorpayScript();
+    if (!resScript) {
+      alert("Failed to load Razorpay SDK. Please check your internet connection.");
+      return;
+    }
+
     // 1. Create order on backend
     const res = await fetch(API_ENDPOINTS.CREATE_ORDER, {
       method: 'POST',
