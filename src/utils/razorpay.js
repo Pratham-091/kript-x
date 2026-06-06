@@ -38,6 +38,15 @@ export const handleRazorpayCheckout = async (navigate, customerData = {}) => {
           });
 
           if (verifyRes.ok) {
+            // Meta Pixel: Pure Browser-Side Purchase Tracking
+            if (window.fbq) {
+              window.fbq('track', 'Purchase', {
+                value: 499.00,
+                currency: 'INR',
+                content_name: 'Claude AI Skills Pro Bundle'
+              });
+            }
+
             // Payment successful, redirect to success page
             navigate(`/success?razorpay_payment_id=${response.razorpay_payment_id}`);
           } else {
