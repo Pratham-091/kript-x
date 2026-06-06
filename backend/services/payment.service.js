@@ -4,8 +4,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID || "rzp_live_Sy6KpggI53KHnE",
-  key_secret: process.env.RAZORPAY_KEY_SECRET || "0pep7YBq0e4qqImU9IWIAopY",
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
 
 export const createRazorpayOrder = async (coupon) => {
@@ -32,7 +32,7 @@ export const createRazorpayOrder = async (coupon) => {
 };
 
 export const verifySignature = (orderId, paymentId, signature) => {
-  const secret = process.env.RAZORPAY_KEY_SECRET || "0pep7YBq0e4qqImU9IWIAopY";
+  const secret = process.env.RAZORPAY_KEY_SECRET;
   const sign = orderId + "|" + paymentId;
   
   const expectedSign = crypto
