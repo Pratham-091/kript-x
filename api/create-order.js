@@ -28,6 +28,9 @@ export default async function handler(req, res) {
       } else if (cleanCoupon === "PROMO100") {
         finalAmountPaise = 39900; // ₹399
         console.log("Coupon PROMO100 applied! New price: 39900");
+      } else if (cleanCoupon === "PROMO489") {
+        finalAmountPaise = 100; // ₹1
+        console.log("Coupon PROMO489 applied! New price: 100");
       } else {
         console.log("Invalid coupon provided:", cleanCoupon);
       }
