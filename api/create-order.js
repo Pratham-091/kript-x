@@ -16,8 +16,25 @@ export default async function handler(req, res) {
       key_secret: "0pep7YBq0e4qqImU9IWIAopY",
     });
     
+    // Process Coupon Code
+    const { coupon } = req.body || {};
+    let finalAmountPaise = 49900; // Base ₹499
+
+    if (coupon) {
+      const cleanCoupon = coupon.trim().toUpperCase();
+      if (cleanCoupon === "KRIPTX50") {
+        finalAmountPaise = 24900; // ₹249
+        console.log("Coupon KRIPTX50 applied! New price: 24900");
+      } else if (cleanCoupon === "PROMO100") {
+        finalAmountPaise = 39900; // ₹399
+        console.log("Coupon PROMO100 applied! New price: 39900");
+      } else {
+        console.log("Invalid coupon provided:", cleanCoupon);
+      }
+    }
+    
     const options = {
-      amount: 49900,
+      amount: finalAmountPaise,
       currency: "INR",
       receipt: "receipt_order_" + Date.now(),
     };

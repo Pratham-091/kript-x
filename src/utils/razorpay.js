@@ -1,9 +1,10 @@
-export const handleRazorpayCheckout = async (navigate) => {
+export const handleRazorpayCheckout = async (navigate, couponCode = "") => {
   try {
     // 1. Create order on backend
     const res = await fetch('/api/create-order', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ coupon: couponCode })
     });
     
     if (!res.ok) {
