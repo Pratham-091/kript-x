@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Download, CheckCircle2 } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { API_ENDPOINTS } from '../config/endpoints';
 
 export default function SuccessPage() {
   const navigate = useNavigate();
@@ -26,8 +27,7 @@ export default function SuccessPage() {
 
     // 10-Minute Expiration Security Check
     if (paymentId) {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
-      fetch(`${backendUrl}/api/payments/check-payment?paymentId=${paymentId}`)
+      fetch(`${API_ENDPOINTS.CHECK_PAYMENT}?paymentId=${paymentId}`)
         .then(res => res.json())
         .then(data => {
           if (data.expired) {
