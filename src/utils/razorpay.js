@@ -46,9 +46,9 @@ export const handleRazorpayCheckout = async (navigate) => {
         }
       },
       prefill: {
-        name: "Valued Customer",
-        email: "customer@example.com",
-        contact: "9999999999"
+        name: "",
+        email: "",
+        contact: ""
       },
       theme: {
         color: "#22c55e"

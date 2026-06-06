@@ -13,6 +13,11 @@ export default function SuccessPage() {
     const paymentId = searchParams.get('razorpay_payment_id');
     const hasPaymentToken = paymentId || searchParams.has('razorpay_payment_link_id');
 
+    // Mailto link generation
+    const subject = encodeURIComponent("Missing Product Delivery");
+    const body = encodeURIComponent(`Name: \nEmail used for purchase: \nMode of Payment (UPI/Card/Netbanking): \nTransaction ID: ${paymentId || "Unknown"}\n\nPlease help me get my product!`);
+    window.supportMailto = `mailto:supportkriptx.com@gmail.com?subject=${subject}&body=${body}`;
+
     // Remove the NODE_ENV check if you want it to block you on localhost too. 
     if (!hasPaymentToken && import.meta.env.PROD) {
       navigate('/');
@@ -90,38 +95,86 @@ export default function SuccessPage() {
               Your order is confirmed and your resources are ready. Click the button below to download your bundle to your device.
             </p>
 
-            {/* DOWNLOAD BUTTON */}
-            <a 
-              href="https://drive.google.com/uc?export=download&id=1170wgM28Jr3mxT5N6Hqcs0dv69zTRuca" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary" 
-              style={{ 
-                display: 'flex', 
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '12px',
-                width: '100%', 
-                fontSize: '1.1rem', 
-                padding: '16px',
-                background: 'var(--accent-green-600)',
-                color: 'white',
-                borderRadius: '12px',
-                boxShadow: 'none',
-                fontWeight: '600'
-              }}
-            >
-              <Download size={20} />
-              Download Complete Bundle
-            </a>
+            {/* DOWNLOAD BUTTONS */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <a 
+                href="https://drive.google.com/uc?export=download&id=1170wgM28Jr3mxT5N6Hqcs0dv69zTRuca" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary" 
+                style={{ 
+                  display: 'flex', 
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '12px',
+                  width: '100%', 
+                  fontSize: '1.1rem', 
+                  padding: '16px',
+                  background: 'var(--accent-green-600)',
+                  color: 'white',
+                  borderRadius: '12px',
+                  boxShadow: 'none',
+                  fontWeight: '600'
+                }}
+              >
+                <Download size={20} />
+                Download Complete Bundle
+              </a>
+
+              <button 
+                onClick={() => window.print()}
+                className="btn-secondary"
+                style={{
+                  display: 'flex', 
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '100%', 
+                  fontSize: '1rem', 
+                  padding: '14px',
+                  background: 'transparent',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  color: 'var(--text-light)',
+                  borderRadius: '12px',
+                  fontWeight: '500',
+                  cursor: 'pointer'
+                }}
+              >
+                Download Receipt
+              </button>
+            </div>
           </div>
           
-          <p style={{ fontSize: '0.95rem', color: 'var(--text-muted-light)', margin: '0 0 8px 0' }}>
-            A receipt has been sent to your email address.
-          </p>
-          <p style={{ fontSize: '0.9rem', color: 'var(--text-muted-dark)', margin: 0 }}>
-            Didn't receive your product? Contact <a href="mailto:supportkriptx.com@gmail.com" style={{ color: 'var(--accent-green-500)', textDecoration: 'underline' }}>supportkriptx.com@gmail.com</a>
-          </p>
+          {/* Missing Product Support Section */}
+          <div style={{ 
+            background: 'var(--bg-slate-800)', 
+            border: '1px dashed rgba(255, 255, 255, 0.1)',
+            padding: '24px', 
+            borderRadius: '16px',
+            textAlign: 'left'
+          }}>
+            <h4 style={{ fontSize: '1.05rem', fontWeight: '600', marginBottom: '8px', color: 'var(--text-light)' }}>
+              Unable to download?
+            </h4>
+            <p style={{ color: 'var(--text-muted-light)', fontSize: '0.9rem', marginBottom: '16px', lineHeight: 1.5 }}>
+              If you didn't receive your product or the download failed, click the button below to send an automated request to our support team.
+            </p>
+            <a 
+              href={window.supportMailto}
+              style={{
+                display: 'inline-block',
+                background: 'rgba(255,255,255,0.05)',
+                color: 'var(--text-light)',
+                padding: '10px 16px',
+                borderRadius: '8px',
+                fontSize: '0.9rem',
+                fontWeight: '500',
+                textDecoration: 'none',
+                border: '1px solid rgba(255,255,255,0.1)'
+              }}
+            >
+              Request Manual Delivery
+            </a>
+          </div>
         </motion.div>
       </main>
     </div>
