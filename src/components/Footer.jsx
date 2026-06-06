@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   const scrollToTop = (e) => {
@@ -32,9 +33,9 @@ export default function Footer() {
           marginBottom: '60px',
           flexWrap: 'wrap'
         }}>
-          <a href="#" style={{ color: 'var(--text-muted-light)', fontSize: '0.9rem', fontWeight: '700' }}>Privacy Policy</a>
-          <a href="#" style={{ color: 'var(--text-muted-light)', fontSize: '0.9rem', fontWeight: '700' }}>Terms & Conditions</a>
-          <a href="#" style={{ color: 'var(--text-muted-light)', fontSize: '0.9rem', fontWeight: '700' }}>Contact Us</a>
+          <Link to="/privacy-policy" style={{ color: 'var(--text-muted-light)', fontSize: '0.9rem', fontWeight: '700' }}>Privacy Policy</Link>
+          <Link to="/terms-conditions" style={{ color: 'var(--text-muted-light)', fontSize: '0.9rem', fontWeight: '700' }}>Terms & Conditions</Link>
+          <a href="mailto:supportkriptx.com@gmail.com" style={{ color: 'var(--text-muted-light)', fontSize: '0.9rem', fontWeight: '700' }}>Contact Us</a>
         </div>
 
         <div style={{ 
