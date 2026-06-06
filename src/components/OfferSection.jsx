@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Clock, Check } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import { handleRazorpayCheckout } from '../utils/razorpay';
 
-export default function OfferSection() {
-  const navigate = useNavigate();
+export default function OfferSection({ onOpenCheckout }) {
   const [timeLeft, setTimeLeft] = useState({ hours: 22, minutes: 18, seconds: 9 });
-  const [coupon, setCoupon] = useState('');
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -92,33 +88,9 @@ export default function OfferSection() {
             ))}
           </ul>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '400px', margin: '0 auto' }}>
-            <input 
-              type="text" 
-              placeholder="Discount Code (Optional)" 
-              value={coupon} 
-              onChange={(e) => setCoupon(e.target.value)}
-              style={{
-                padding: '14px 16px',
-                borderRadius: '12px',
-                border: '1px solid rgba(255,255,255,0.1)',
-                fontSize: '1rem',
-                outline: 'none',
-                textTransform: 'uppercase',
-                background: 'rgba(255,255,255,0.05)',
-                color: 'var(--text-light)',
-                fontWeight: '500',
-                textAlign: 'center'
-              }}
-            />
-            <button 
-              onClick={() => handleRazorpayCheckout(navigate, coupon)} 
-              className="btn-primary" 
-              style={{ width: '100%', cursor: 'pointer', border: 'none' }}
-            >
-              GET INSTANT ACCESS @ ₹499
-            </button>
-          </div>
+          <button onClick={onOpenCheckout} className="btn-primary" style={{ width: '100%', maxWidth: '400px', display: 'block', margin: '0 auto', cursor: 'pointer', border: 'none' }}>
+            GET INSTANT ACCESS @ ₹499
+          </button>
 
           <div style={{ display: 'flex', justifyContent: 'center', gap: '24px', marginTop: '32px', flexWrap: 'wrap' }}>
             <span style={{ fontSize: '0.85rem', color: 'var(--text-muted-light)', fontWeight: '700' }}>
@@ -131,9 +103,8 @@ export default function OfferSection() {
         </motion.div>
       </div>
 
-      {/* Sticky Mobile CTA */}
       <div className="sticky-cta-mobile">
-        <button onClick={() => handleRazorpayCheckout(navigate, coupon)} className="btn-primary" style={{ width: '100%', display: 'block', padding: '14px', cursor: 'pointer', border: 'none' }}>
+        <button onClick={onOpenCheckout} className="btn-primary" style={{ width: '100%', display: 'block', padding: '14px', cursor: 'pointer', border: 'none' }}>
           GET INSTANT ACCESS @ ₹499
         </button>
       </div>

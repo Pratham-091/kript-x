@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
-import { handleRazorpayCheckout } from '../utils/razorpay';
 import ClaudeIcon from './ClaudeIcon';
 
-export default function Hero() {
-  const navigate = useNavigate();
-  const [coupon, setCoupon] = useState('');
+export default function Hero({ onOpenCheckout }) {
   return (
     <section className="hero-section">
       <div className="container responsive-flex hero-flex-mobile">
@@ -74,31 +70,13 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.3 }}
             style={{ marginBottom: '60px' }}
           >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '400px' }}>
-              <input 
-                type="text" 
-                placeholder="Discount Code (Optional)" 
-                value={coupon} 
-                onChange={(e) => setCoupon(e.target.value)}
-                style={{
-                  padding: '14px 16px',
-                  borderRadius: '12px',
-                  border: '1px solid rgba(0,0,0,0.1)',
-                  fontSize: '1rem',
-                  outline: 'none',
-                  textTransform: 'uppercase',
-                  background: 'var(--bg-slate-50)',
-                  fontWeight: '500'
-                }}
-              />
-              <button 
-                onClick={() => handleRazorpayCheckout(navigate, coupon)} 
-                className="btn-primary" 
-                style={{ width: '100%', cursor: 'pointer', border: 'none' }}
-              >
-                GET INSTANT ACCESS @ ₹499
-              </button>
-            </div>
+            <button 
+              onClick={onOpenCheckout} 
+              className="btn-primary" 
+              style={{ width: '100%', maxWidth: '400px', cursor: 'pointer', border: 'none' }}
+            >
+              GET INSTANT ACCESS @ ₹499
+            </button>
             <p style={{ color: 'var(--text-muted-dark)', marginTop: '16px', fontSize: '0.9rem', fontWeight: 700 }}>
               One-time payment | Instant delivery
             </p>

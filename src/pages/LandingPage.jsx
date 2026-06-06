@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Hero from '../components/Hero';
 import Comparison from '../components/Comparison';
 import Steps from '../components/Steps';
@@ -11,11 +11,10 @@ import SocialProof from '../components/SocialProof';
 import OfferSection from '../components/OfferSection';
 import FAQ from '../components/FAQ';
 import Footer from '../components/Footer';
-import { useNavigate } from 'react-router-dom';
-import { handleRazorpayCheckout } from '../utils/razorpay';
+import CheckoutModal from '../components/CheckoutModal';
 
 export default function LandingPage() {
-  const navigate = useNavigate();
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 
   return (
     <div className="app" style={{ background: 'var(--bg-offwhite)', minHeight: '100vh' }}>
@@ -54,13 +53,13 @@ export default function LandingPage() {
             className="nav-logo"
           />
         </div>
-        <button onClick={() => handleRazorpayCheckout(navigate)} className="btn-secondary" style={{ padding: '10px 20px', fontSize: '0.95rem', cursor: 'pointer', border: 'none' }}>
+        <button onClick={() => setIsCheckoutOpen(true)} className="btn-secondary" style={{ padding: '10px 20px', fontSize: '0.95rem', cursor: 'pointer', border: 'none' }}>
           Get Access
         </button>
       </nav>
 
       <main>
-        <Hero />
+        <Hero onOpenCheckout={() => setIsCheckoutOpen(true)} />
         <Comparison />
         <Steps />
         <CategoryGrid />
@@ -69,11 +68,12 @@ export default function LandingPage() {
         <BundleIncludes />
         <Marquee />
         <SocialProof />
-        <OfferSection />
+        <OfferSection onOpenCheckout={() => setIsCheckoutOpen(true)} />
         <FAQ />
       </main>
 
       <Footer />
+      <CheckoutModal isOpen={isCheckoutOpen} onClose={() => setIsCheckoutOpen(false)} />
     </div>
   );
 }

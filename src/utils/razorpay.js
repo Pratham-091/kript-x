@@ -1,10 +1,10 @@
-export const handleRazorpayCheckout = async (navigate, couponCode = "") => {
+export const handleRazorpayCheckout = async (navigate, customerData = {}) => {
   try {
     // 1. Create order on backend
     const res = await fetch('/api/create-order', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ coupon: couponCode })
+      body: JSON.stringify({ coupon: customerData.coupon || "" })
     });
     
     if (!res.ok) {
@@ -47,9 +47,9 @@ export const handleRazorpayCheckout = async (navigate, couponCode = "") => {
         }
       },
       prefill: {
-        name: "",
-        email: "",
-        contact: ""
+        name: customerData.name || "",
+        email: customerData.email || "",
+        contact: customerData.phone || ""
       },
       theme: {
         color: "#22c55e"
