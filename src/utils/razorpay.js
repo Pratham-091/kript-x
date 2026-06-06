@@ -14,7 +14,7 @@ export const handleRazorpayCheckout = async (navigate) => {
 
     // 2. Open Razorpay Modal
     const options = {
-      key: import.meta.env.VITE_RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
+      key: "rzp_live_Sy6KpggI53KHnE",
       amount: order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       currency: order.currency,
       name: "Kript-X",

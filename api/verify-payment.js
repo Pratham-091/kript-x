@@ -21,7 +21,7 @@ export default function handler(req, res) {
     console.log("Constructed signature payload:", sign);
 
     const expectedSign = crypto
-      .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
+      .createHmac("sha256", "0pep7YBq0e4qqImU9IWIAopY")
       .update(sign.toString())
       .digest("hex");
       
