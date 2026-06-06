@@ -1,4 +1,4 @@
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || (import.meta.env.PROD ? 'https://kript-x.onrender.com' : 'http://localhost:5000');
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'https://kript-x.onrender.com';
 
 export const API_ENDPOINTS = {
   CREATE_ORDER: `${BACKEND_URL}/api/payments/create-order`,
