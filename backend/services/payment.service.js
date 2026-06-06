@@ -19,6 +19,9 @@ export const createRazorpayOrder = async (coupon) => {
       finalAmountPaise = 39900;
     } else if (cleanCoupon === "PROMO489") {
       finalAmountPaise = 100;
+    } else if (cleanCoupon === "METATEST100") {
+      // Razorpay requires a minimum of ₹1 (100 paise) to actually fire the checkout modal and test the funnel.
+      finalAmountPaise = 100;
     }
   }
 
