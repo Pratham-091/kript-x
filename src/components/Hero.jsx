@@ -38,16 +38,14 @@ export default function Hero({ onOpenCheckout }) {
               fontSize: 'clamp(2.5rem, 8vw, 3.5rem)',
               lineHeight: 1.15,
               marginBottom: '24px',
-              color: 'var(--text-dark)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-start'
+              color: 'var(--text-dark)'
             }}
           >
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '12px' }}>
-              Upgrade Claude <ClaudeIcon size={40} style={{ marginTop: '-4px' }} />
-            </span>
-            <span>Into Your <span className="highlight-yellow">All-In-One AI Workspace</span></span>
+            Upgrade Claude{' '}
+            <span style={{ display: 'inline-block', verticalAlign: 'middle', marginTop: '-8px', margin: '0 4px' }}>
+              <ClaudeIcon size={40} />
+            </span>{' '}
+            Into Your <span className="highlight-yellow">All-In-One AI Workspace</span>
           </motion.h1>
 
           <motion.p 
