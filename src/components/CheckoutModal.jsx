@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Lock, CheckCircle2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -13,6 +13,16 @@ export default function CheckoutModal({ isOpen, onClose }) {
     coupon: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (isOpen && window.fbq) {
+      window.fbq('track', 'InitiateCheckout', {
+        value: 499.00,
+        currency: 'INR',
+        content_name: 'Claude AI Skills Pro Bundle'
+      });
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
 

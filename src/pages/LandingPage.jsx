@@ -5,6 +5,7 @@ import Hero from '../components/Hero';
 const Comparison = lazy(() => import('../components/Comparison'));
 const Steps = lazy(() => import('../components/Steps'));
 const CategoryGrid = lazy(() => import('../components/CategoryGrid'));
+const ProductPreview = lazy(() => import('../components/ProductPreview'));
 const Features = lazy(() => import('../components/Features'));
 const PowerPrompts = lazy(() => import('../components/PowerPrompts'));
 const BundleIncludes = lazy(() => import('../components/BundleIncludes'));
@@ -66,6 +67,7 @@ export default function LandingPage() {
           <Comparison />
           <Steps />
           <CategoryGrid />
+          <ProductPreview />
           <Features />
           <PowerPrompts />
           <BundleIncludes />

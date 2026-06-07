@@ -16,8 +16,10 @@ export default function SuccessPage() {
   const supportMailto = `mailto:supportkriptx.com@gmail.com?subject=${subject}&body=${body}`;
 
   useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const id = params.get('razorpay_payment_id');
     // Basic Security: Check if the user actually came from Razorpay.
-    const hasPaymentToken = paymentId || searchParams.has('razorpay_payment_link_id');
+    const hasPaymentToken = id || params.has('razorpay_payment_link_id');
 
     // Remove the NODE_ENV check if you want it to block you on localhost too. 
     if (!hasPaymentToken && import.meta.env.PROD) {
@@ -26,8 +28,8 @@ export default function SuccessPage() {
     }
 
     // 10-Minute Expiration Security Check
-    if (paymentId) {
-      fetch(`${API_ENDPOINTS.CHECK_PAYMENT}?paymentId=${paymentId}`)
+    if (id) {
+      fetch(`${API_ENDPOINTS.CHECK_PAYMENT}?paymentId=${id}`)
         .then(res => res.json())
         .then(data => {
           if (data.expired) {
@@ -35,9 +37,9 @@ export default function SuccessPage() {
             navigate('/');
           }
         })
-        .catch(err => console.error("Could not verify payment age"));
+        .catch(error => console.error("Could not verify payment age", error));
     }
-  }, [location, navigate]);
+  }, [location.search, navigate]);
 
   return (
     <div style={{ 
