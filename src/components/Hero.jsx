@@ -5,14 +5,14 @@ import ClaudeIcon from './ClaudeIcon';
 export default function Hero({ onOpenCheckout }) {
   return (
     <section className="hero-section">
-      <div className="container responsive-flex hero-flex-mobile">
+      <div className="container responsive-flex hero-flex-mobile" style={{ alignItems: 'center' }}>
         
         {/* Left: Product Image */}
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          style={{ flex: '1 1 400px', textAlign: 'center' }}
+          style={{ flex: '1 1 480px', textAlign: 'center' }}
         >
           <img 
             src="/kriptx_bundle_box.png" 
@@ -37,36 +37,51 @@ export default function Hero({ onOpenCheckout }) {
             style={{ 
               fontSize: 'clamp(2.5rem, 8vw, 3.5rem)',
               lineHeight: 1.15,
-              marginBottom: '24px',
-              color: 'var(--text-dark)'
+              marginBottom: '20px',
+              color: 'var(--text-dark)',
+              fontWeight: '900'
             }}
           >
-            Upgrade Claude{' '}
-            <span style={{ display: 'inline-block', verticalAlign: 'middle', marginTop: '-8px', margin: '0 4px' }}>
-              <ClaudeIcon size={40} />
-            </span>{' '}
-            Into Your <span className="highlight-yellow">All-In-One AI Workspace</span>
+            2,000+ Claude Skills.<br />
+            For Less Than <span className="highlight-yellow">₹0.25 Per Skill.</span>
           </motion.h1>
+
+          <motion.h3
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="hero-text-center-mobile"
+            style={{ 
+              fontSize: 'clamp(1.15rem, 3vw, 1.35rem)',
+              fontWeight: '700',
+              marginBottom: '16px',
+              color: 'var(--text-dark)',
+              lineHeight: 1.3
+            }}
+          >
+            Stop opening Claude and wondering what to type.
+          </motion.h3>
 
           <motion.p 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             style={{ 
-              fontSize: '1.1rem', 
-              marginBottom: '40px', 
+              fontSize: '1.05rem', 
+              marginBottom: '24px', 
               maxWidth: '600px',
-              color: 'var(--text-muted-dark)'
+              color: 'var(--text-muted-dark)',
+              lineHeight: '1.5'
             }}
           >
-            Access powerful, ready-to-use resources designed to help you write faster, automate tasks, and save hours every week. Bonus setup guide included.
+            Get instant access to 2,000+ ready-to-use Claude skills built for marketers, founders, creators and AI enthusiasts who want faster output, better ideas and less trial-and-error.
           </motion.p>
 
           <motion.div 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            style={{ marginBottom: '60px' }}
+            style={{ marginBottom: '0px' }}
           >
             <button 
               onClick={onOpenCheckout} 
@@ -75,9 +90,17 @@ export default function Hero({ onOpenCheckout }) {
             >
               GET INSTANT ACCESS @ ₹499
             </button>
-            <p style={{ color: 'var(--text-muted-dark)', marginTop: '16px', fontSize: '0.9rem', fontWeight: 700 }}>
-              One-time payment | Instant delivery
+            <p className="text-sm font-bold text-slate-500 mt-3 text-center">
+              💡 2,000 skills ÷ ₹499 = less than <span className="text-orange-500">₹0.25 per skill</span>
             </p>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '12px', gap: '6px' }}>
+              <span style={{ color: 'var(--text-muted-dark)', fontSize: '0.85rem', fontWeight: 700 }}>
+                One-time payment | Instant delivery
+              </span>
+              <a href="/success" style={{ color: 'var(--accent-green-700)', fontSize: '0.85rem', fontWeight: 700, textDecoration: 'underline' }}>
+                Already paid? Access your download →
+              </a>
+            </div>
           </motion.div>
         </div>
       </div>

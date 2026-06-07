@@ -88,6 +88,25 @@ export default function OfferSection({ onOpenCheckout }) {
             ))}
           </ul>
 
+          <div className="mb-6">
+            <p className="text-center font-bold text-slate-700 mb-4" style={{ color: 'var(--text-light)' }}>₹499 costs less than:</p>
+            <div className="flex justify-center items-center gap-8 mb-6 flex-wrap" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '32px', marginBottom: '24px', flexWrap: 'wrap' }}>
+              {[
+                { emoji: "☕", label: "3 Coffees" },
+                { emoji: "🍔", label: "2 Food Deliveries" },
+                { emoji: "🎬", label: "1 Movie Night" }
+              ].map((item, i) => (
+                <div key={i} className="flex flex-col items-center gap-1" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+                  <span className="text-3xl" style={{ fontSize: '1.875rem' }}>{item.emoji}</span>
+                  <span className="text-xs font-bold text-slate-500" style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#94a3b8' }}>{item.label}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-center italic text-slate-600 font-medium mb-4 max-w-lg mx-auto" style={{ color: 'var(--text-muted-light)', maxWidth: '32rem', margin: '0 auto 16px', fontStyle: 'italic' }}>
+              "Your competition is already using Claude. The question is — will you still be starting from scratch?"
+            </p>
+          </div>
+
           <button onClick={onOpenCheckout} className="btn-primary" style={{ width: '100%', maxWidth: '400px', display: 'block', margin: '0 auto', cursor: 'pointer', border: 'none' }}>
             GET INSTANT ACCESS @ ₹499
           </button>
@@ -99,6 +118,12 @@ export default function OfferSection({ onOpenCheckout }) {
             <span style={{ fontSize: '0.85rem', color: 'var(--text-muted-light)', fontWeight: '700' }}>
               ✓ Immediate Download
             </span>
+          </div>
+
+          <div className="text-center mt-4">
+            <a href="/success" className="text-sm text-slate-400 underline hover:text-slate-600 transition-colors" style={{ color: '#94a3b8', fontSize: '0.875rem', textDecoration: 'underline' }}>
+              Already purchased? Access your download →
+            </a>
           </div>
         </motion.div>
       </div>
