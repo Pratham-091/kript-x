@@ -16,7 +16,7 @@ export default function CheckoutModal({ isOpen, onClose }) {
 
   useEffect(() => {
     if (isOpen && window.fbq) {
-      window.fbq('track', 'InitiateCheckout', {
+      window.fbq('track', 'AddToCart', {
         value: 499.00,
         currency: 'INR',
         content_name: 'Claude AI Skills Pro Bundle'
@@ -33,6 +33,15 @@ export default function CheckoutModal({ isOpen, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    
+    if (window.fbq) {
+      window.fbq('track', 'InitiateCheckout', {
+        value: 499.00,
+        currency: 'INR',
+        content_name: 'Claude AI Skills Pro Bundle'
+      });
+    }
+
     await handleRazorpayCheckout(navigate, formData);
     setIsSubmitting(false);
     onClose();
