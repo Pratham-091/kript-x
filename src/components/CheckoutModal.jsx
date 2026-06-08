@@ -14,15 +14,7 @@ export default function CheckoutModal({ isOpen, onClose }) {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  useEffect(() => {
-    if (isOpen && window.fbq) {
-      window.fbq('track', 'AddToCart', {
-        value: 499.00,
-        currency: 'INR',
-        content_name: 'Claude AI Skills Pro Bundle'
-      });
-    }
-  }, [isOpen]);
+
 
   if (!isOpen) return null;
 

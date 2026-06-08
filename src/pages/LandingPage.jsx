@@ -20,6 +20,17 @@ import SkeletonLoader from '../components/SkeletonLoader';
 export default function LandingPage() {
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 
+  const handleOpenCheckout = () => {
+    if (window.fbq) {
+      window.fbq('track', 'AddToCart', {
+        value: 499.00,
+        currency: 'INR',
+        content_name: 'Claude AI Skills Pro Bundle'
+      });
+    }
+    setIsCheckoutOpen(true);
+  };
+
   return (
     <div className="app" style={{ background: 'var(--bg-offwhite)', minHeight: '100vh' }}>
       {/* Top Notification Banner */}
@@ -57,13 +68,13 @@ export default function LandingPage() {
             className="nav-logo"
           />
         </div>
-        <button onClick={() => setIsCheckoutOpen(true)} className="btn-secondary" style={{ padding: '10px 20px', fontSize: '0.95rem', cursor: 'pointer', border: 'none' }}>
+        <button onClick={handleOpenCheckout} className="btn-secondary" style={{ padding: '10px 20px', fontSize: '0.95rem', cursor: 'pointer', border: 'none' }}>
           Get Access
         </button>
       </nav>
 
       <main>
-        <Hero onOpenCheckout={() => setIsCheckoutOpen(true)} />
+        <Hero onOpenCheckout={handleOpenCheckout} />
         <Suspense fallback={<SkeletonLoader />}>
           <section className="py-16 px-4 bg-white">
             <div className="max-w-5xl mx-auto">
@@ -112,7 +123,7 @@ export default function LandingPage() {
           <BundleIncludes />
           <Marquee />
           <SocialProof />
-          <OfferSection onOpenCheckout={() => setIsCheckoutOpen(true)} />
+          <OfferSection onOpenCheckout={handleOpenCheckout} />
           <FAQ />
         </Suspense>
       </main>
