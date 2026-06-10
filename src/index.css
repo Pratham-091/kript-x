@@ -285,6 +285,10 @@ a {
     gap: 16px !important;
   }
   
+  .hero-child-mobile {
+    flex-basis: auto !important;
+  }
+  
   .hero-text-center-mobile {
     align-items: center !important;
     text-align: center;

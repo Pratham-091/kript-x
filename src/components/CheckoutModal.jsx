@@ -9,7 +9,6 @@ export default function CheckoutModal({ isOpen, onClose }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
     coupon: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -93,6 +92,20 @@ export default function CheckoutModal({ isOpen, onClose }) {
             <p style={{ color: 'var(--text-muted-light)', fontSize: '0.95rem' }}>Enter your details to get instant access</p>
           </div>
 
+          <div style={{ 
+            padding: '12px', 
+            background: 'rgba(234, 179, 8, 0.1)', 
+            border: '1px dashed var(--accent-yellow-400)', 
+            borderRadius: '8px', 
+            color: 'var(--accent-yellow-400)', 
+            textAlign: 'center', 
+            marginBottom: '24px', 
+            fontSize: '0.9rem', 
+            fontWeight: '600' 
+          }}>
+            🎉 Special Offer: Use coupon <span style={{ background: 'var(--accent-yellow-400)', color: '#000', padding: '2px 6px', borderRadius: '4px', margin: '0 4px' }}>KRIPT-X 20</span> for ₹100 OFF!
+          </div>
+
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             <div>
               <label style={{ display: 'block', color: 'var(--text-muted-light)', fontSize: '0.85rem', marginBottom: '6px', fontWeight: '500' }}>Full Name *</label>
@@ -138,27 +151,7 @@ export default function CheckoutModal({ isOpen, onClose }) {
               />
             </div>
 
-            <div>
-              <label style={{ display: 'block', color: 'var(--text-muted-light)', fontSize: '0.85rem', marginBottom: '6px', fontWeight: '500' }}>Phone Number *</label>
-              <input 
-                required
-                type="tel" 
-                name="phone"
-                placeholder="9999999999"
-                value={formData.phone}
-                onChange={handleChange}
-                style={{
-                  width: '100%',
-                  padding: '14px 16px',
-                  borderRadius: '12px',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  background: 'rgba(0,0,0,0.2)',
-                  color: 'var(--text-light)',
-                  fontSize: '1rem',
-                  outline: 'none'
-                }}
-              />
-            </div>
+
 
             <div>
               <label style={{ display: 'block', color: 'var(--text-muted-light)', fontSize: '0.85rem', marginBottom: '6px', fontWeight: '500' }}>Discount Code (Optional)</label>

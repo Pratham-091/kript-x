@@ -44,7 +44,7 @@ export default function LandingPage() {
         zIndex: 51,
         position: 'relative'
       }}>
-        🚀 Unlock 2,000+ Claude Skills at Only ₹499 — No Monthly Fees
+        🚀 Unlock 2,000+ Claude Skills at Only ₹499 — Use coupon <strong style={{color: 'var(--accent-yellow-400)'}}>KRIPT-X 20</strong> for ₹100 OFF! 🎉
       </div>
 
       {/* Navbar/Header */}

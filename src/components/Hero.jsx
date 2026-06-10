@@ -12,6 +12,7 @@ export default function Hero({ onOpenCheckout }) {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
+          className="hero-child-mobile"
           style={{ flex: '1 1 480px', textAlign: 'center' }}
         >
           <img 
@@ -28,7 +29,7 @@ export default function Hero({ onOpenCheckout }) {
         </motion.div>
 
         {/* Right: Copy */}
-        <div style={{ flex: '1 1 500px' }}>
+        <div className="hero-child-mobile" style={{ flex: '1 1 500px' }}>
           <motion.h1 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -81,12 +82,12 @@ export default function Hero({ onOpenCheckout }) {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            style={{ marginBottom: '0px' }}
+            style={{ marginBottom: '0px', maxWidth: '400px' }}
           >
             <button 
               onClick={onOpenCheckout} 
               className="btn-primary" 
-              style={{ width: '100%', maxWidth: '400px', cursor: 'pointer', border: 'none' }}
+              style={{ width: '100%', cursor: 'pointer', border: 'none' }}
             >
               GET INSTANT ACCESS @ ₹499
             </button>
