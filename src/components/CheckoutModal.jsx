@@ -103,7 +103,7 @@ export default function CheckoutModal({ isOpen, onClose }) {
             fontSize: '0.9rem', 
             fontWeight: '600' 
           }}>
-            🎉 Special Offer: Use coupon <span style={{ background: 'var(--accent-yellow-400)', color: '#000', padding: '2px 6px', borderRadius: '4px', margin: '0 4px' }}>KRIPT-X 20</span> for ₹100 OFF!
+            🎉 Special Offer: Use coupon <span style={{ background: 'var(--accent-yellow-400)', color: '#000', padding: '2px 6px', borderRadius: '4px', margin: '0 4px', whiteSpace: 'nowrap' }}>KRIPT-X 20</span> for ₹100 OFF!
           </div>
 
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
