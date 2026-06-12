@@ -18,6 +18,10 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '27395125766749493');
     fbq('track', 'PageView');
+
+    setTimeout(function(){ fbq('trackCustom', 'timespent_10sec'); }, 10000);
+    setTimeout(function(){ fbq('trackCustom', 'Timespent_30sec'); }, 30000);
+    setTimeout(function(){ fbq('trackCustom', 'timespent_60sec'); }, 60000);
     </script>
     <!-- End Meta Pixel Code -->
     <script src="https://cdn.tailwindcss.com"></script>
